@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="app.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <template x-data="notify" x-if="show">
+        <div 
+            role="alert" class="flex justify-between items-center alert alert-warning">
+            <div class="flex gap-2 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>Warning: Invalid email address!</span>
+            </div>
+            <div>
+                <button class="btn" @click="dismiss">x</button>
+            </div>
+        </div>
+    </template>
+
+    <div x-data="obj" class="m-2">
+        <div class="grid grid-cols-12 gap-2">
+            <input class="col-span-7 rounded m-2 px-2 py-1 border border-ember-900" x-model.trim="input_text" @keyup.enter="addText" type="text">
+        
+            <div class='col-span-3 flex gap-1'>
+                <button class="btn btn-neutral bg-blue-400 border-none" @click="addText">Add</button>
+                <button class="btn btn-neutral bg-blue-400 border-none" @click="clearText">Clear</button>
+            </div>
+    
+
+        </div>
+
+        <ul>
+            <template x-for="num in numbers">
+                <li x-text="num" class="btn-primary"></li>
+            </template>
+
+        </ul>
+
+        <h2 x-show="show">hi</h2>
+        
+    </div>
+</body>
+</html>
